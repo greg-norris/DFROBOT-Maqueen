@@ -10,7 +10,7 @@ enum PingUnit {
 }
 
 //% weight=10 color=#008B00 icon="\uf136" block="Maqueen"
-//% groups="['Motors', 'Distance Sensor', 'Line Reader','Headlights and Underlights']"
+//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights and Underlights"]'
 namespace Maqueen {
 
     export class Packeta {

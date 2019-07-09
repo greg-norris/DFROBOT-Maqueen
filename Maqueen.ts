@@ -90,7 +90,7 @@ namespace Maqueen {
     }
     //% weight=99
     //% group="Motors"
-    //% blockId=motor_MotorRun block="Set both motors to|%Direction|at the speed|%speed" 
+    //% blockId=motor_BothMotorRun block="Set both motors to|%Direction|at the speed|%speed" 
     //% speed.min=0 speed.max=100
     //% speed.defl=100
     //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2

@@ -124,7 +124,7 @@ namespace Maqueen {
 
     //% group="Distance Sensor"
     //% blockId=ultrasonic_sensor block="read distance sensor unit in |%unit"
-    //% weight=90
+    //% weight=40
     export function sensor(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse  basic.pause=sleep control.waitMicros=delay
         pins.setPull(DigitalPin.P1, PinPullMode.PullNone);
@@ -149,7 +149,7 @@ namespace Maqueen {
         }
     }
     //% group="Line Reader"
-    //% weight=85
+    //% weight=30
     //% blockId=read_Linesensor block=" %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
     export function readlinereadervalue(Line: Linesensor): number {
@@ -163,7 +163,7 @@ namespace Maqueen {
     }
 
     //% group="Headlights and Underlights"
-    //% weight=80
+    //% weight=20
     //% blockId=writeLED block="Set|%led|to|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
@@ -179,7 +179,7 @@ namespace Maqueen {
 
     //% group="Headlights and Underlights"
     //% block="set UnderGlow color of %LEDStrip to %rgb=colorNumberPicker"
-    //% weight=75 blockGap=8
+    //% weight=20 blockGap=8
     export function setUnderGlowColor(index: LEDStrip, color: number): void {
         strip.setBrightness(100)
         if (index == LEDStrip.RGB0) { strip.setPixelColor(0, color) }
@@ -191,7 +191,7 @@ namespace Maqueen {
 
     //% group="Headlights and Underlights"
     //% block="set UnderGlow of %LEDStrip off"
-    //% weight=70 blockGap=8
+    //% weight=20 blockGap=8
     export function setUnderGlowColoroff(index: LEDStrip): void {
         strip.setBrightness(100)
         if (index == LEDStrip.RGB0) { strip.setPixelColor(0, 0x000000) }

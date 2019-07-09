@@ -72,9 +72,10 @@ namespace Maqueen {
     //% group="Motors"
     //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed"
     //% speed.min=0 speed.max=100
+    //% speed.defl=42
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2
-
+    //% weight=100
     export function MotorRun(index: Motors, Directionection: Direction, speed: number): void {
         let buf = pins.createBuffer(3);
         if (index == 0) {
@@ -92,7 +93,8 @@ namespace Maqueen {
 
     //% group="Motors"
     //% blockId=motor_motorStop block="Stop|%motors"
-    //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2 
+    //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2
+    //% weight=98
     export function motorStop(motors: Motors): void {
         let buf = pins.createBuffer(3);
         if (motors == 0) {
@@ -107,6 +109,7 @@ namespace Maqueen {
     }
     //% group="Motors"
     //% blockId=motor_motorStopAll block="Motor Stop All"
+    //% weight=97
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);
         buf[0] = 0x00;
@@ -118,7 +121,7 @@ namespace Maqueen {
     }
 
     //% group="Distance Sensor"
-    //% blockId=ultrasonic_sensor block="read distance sensor unit in |%unit"
+    //% blockId=ultrasonic_sensor block="distance sensor value in |%unit"
     export function sensor(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse  basic.pause=sleep control.waitMicros=delay
         pins.setPull(DigitalPin.P1, PinPullMode.PullNone);

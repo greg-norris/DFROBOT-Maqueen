@@ -74,7 +74,6 @@ namespace Maqueen {
     //% speed.min=0 speed.max=100
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2
-    //% weight=100
 
     export function MotorRun(index: Motors, Directionection: Direction, speed: number): void {
         let buf = pins.createBuffer(3);
@@ -94,7 +93,6 @@ namespace Maqueen {
     //% group="Motors"
     //% blockId=motor_motorStop block="Stop|%motors"
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2 
-    //% weight=95
     export function motorStop(motors: Motors): void {
         let buf = pins.createBuffer(3);
         if (motors == 0) {
@@ -109,7 +107,6 @@ namespace Maqueen {
     }
     //% group="Motors"
     //% blockId=motor_motorStopAll block="Motor Stop All"
-    //% weight=94
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);
         buf[0] = 0x00;
@@ -122,7 +119,6 @@ namespace Maqueen {
 
     //% group="Distance Sensor"
     //% blockId=ultrasonic_sensor block="read distance sensor unit in |%unit"
-    //% weight=40
     export function sensor(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse  basic.pause=sleep control.waitMicros=delay
         pins.setPull(DigitalPin.P1, PinPullMode.PullNone);
@@ -147,7 +143,6 @@ namespace Maqueen {
         }
     }
     //% group="Line Reader"
-    //% weight=30
     //% blockId=read_Linesensor block=" %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
     export function readlinereadervalue(Line: Linesensor): number {
@@ -161,7 +156,6 @@ namespace Maqueen {
     }
 
     //% group="Headlights and Underlights"
-    //% weight=20
     //% blockId=writeLED block="Set|%led|to|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
@@ -177,7 +171,7 @@ namespace Maqueen {
 
     //% group="Headlights and Underlights"
     //% block="set UnderGlow color of %LEDStrip to %rgb=colorNumberPicker"
-    //% weight=20 blockGap=8
+    //% blockGap=8
     export function setUnderGlowColor(index: LEDStrip, color: number): void {
         strip.setBrightness(100)
         if (index == LEDStrip.RGB0) { strip.setPixelColor(0, color) }
@@ -189,7 +183,7 @@ namespace Maqueen {
 
     //% group="Headlights and Underlights"
     //% block="set UnderGlow of %LEDStrip off"
-    //% weight=20 blockGap=8
+    //% blockGap=8
     export function setUnderGlowColoroff(index: LEDStrip): void {
         strip.setBrightness(100)
         if (index == LEDStrip.RGB0) { strip.setPixelColor(0, 0x000000) }

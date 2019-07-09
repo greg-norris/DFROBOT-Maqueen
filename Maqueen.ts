@@ -100,6 +100,7 @@ namespace Maqueen {
         if (index == 1) {
             buf[0] = 0x02;
         }
+        speed = speed * 2.55
         buf[1] = Directionection;
         buf[2] = speed;
         pins.i2cWriteBuffer(0x10, buf);

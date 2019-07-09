@@ -9,7 +9,7 @@ enum PingUnit {
     MicroSeconds
 }
 
-//% weight=100 color=#008B00 icon="\uf136" block="Maqueen"
+//% weight=10 color=#008B00 icon="\uf136" block="Maqueen"
 //% groups="['Motors', 'Distance Sensor', 'Line Reader','Headlights and Underlights']"
 namespace Maqueen {
 
@@ -93,7 +93,7 @@ namespace Maqueen {
 
     //% block
     //% group="Motors"
-    //% weight=95
+    //% weight=100
     //% blockId=motor_motorStop block="Stop|%motors"
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2 
     export function motorStop(motors: Motors): void {
@@ -110,7 +110,7 @@ namespace Maqueen {
     }
     //% block
     //% group="Motors"
-    //% weight=90
+    //% weight=100
     //% blockId=motor_motorStopAll block="Motor Stop All"
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);

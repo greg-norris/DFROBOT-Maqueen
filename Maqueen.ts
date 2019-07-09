@@ -68,9 +68,9 @@ namespace Maqueen {
         //% blockId="OFF" block="OFF"
         OFF = 0x00
     }
-
+    //% weight=100
     //% group="Motors"
-    //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed" weight=100
+    //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed" 
     //% speed.min=0 speed.max=100
     //% speed.defl=100
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
@@ -89,11 +89,10 @@ namespace Maqueen {
         pins.i2cWriteBuffer(0x10, buf);
     }
 
-
+    //% weight=99
     //% group="Motors"
     //% blockId=motor_motorStop block="Stop|%motors"
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2
-    //% weight=100
     export function motorStop(motors: Motors): void {
         let buf = pins.createBuffer(3);
         if (motors == 0) {
@@ -106,9 +105,10 @@ namespace Maqueen {
         buf[2] = 0;
         pins.i2cWriteBuffer(0x10, buf);
     }
+
+    //% weight=98
     //% group="Motors"
-    //% blockId=motor_motorStopAll block="Motor Stop All"
-    //% weight=100
+    //% blockId=motor_motorStopAll block="Stop both motors"
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);
         buf[0] = 0x00;
@@ -119,6 +119,7 @@ namespace Maqueen {
         pins.i2cWriteBuffer(0x10, buf);
     }
 
+    //% weight=90
     //% group="Distance Sensor"
     //% blockId=ultrasonic_sensor block="distance sensor value in |%unit"
     export function sensor(unit: PingUnit, maxCmDistance = 500): number {
@@ -144,6 +145,8 @@ namespace Maqueen {
             default: return dr;
         }
     }
+
+    //% weight=89
     //% group="Line Reader"
     //% blockId=read_Linesensor block=" %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
@@ -157,6 +160,7 @@ namespace Maqueen {
         }
     }
 
+    //% weight=87
     //% group="Headlights and Underlights"
     //% blockId=writeLED block="Set|%led|to|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
@@ -171,6 +175,7 @@ namespace Maqueen {
         }
     }
 
+    //% weight=85
     //% group="Headlights and Underlights"
     //% block="Set underglow color of %LEDStrip to %rgb=colorNumberPicker"
     //% blockGap=8
@@ -183,6 +188,7 @@ namespace Maqueen {
 
     }
 
+    //% weight=84
     //% group="Headlights and Underlights"
     //% block="Set underglow of %LEDStrip off"
     //% blockGap=8

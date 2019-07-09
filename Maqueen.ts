@@ -69,24 +69,9 @@ namespace Maqueen {
         OFF = 0x00
     }
 
-
-    //% advanced=true shim=maqueenIR::getParam
-    function getParam(): number {
-        return 0
-    }
-
-    function maqueenInit(): void {
-        if (alreadyInit == 1) {
-            return
-        }
-        //initIR(Pins.P16)
-        alreadyInit = 1
-    }
-
-
     //% block
     //% group="Motors"
-    //% weight=50
+    //% weight=100
     //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed"
     //% speed.min=0 speed.max=100
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
@@ -108,7 +93,7 @@ namespace Maqueen {
 
     //% block
     //% group="Motors"
-    //% weight=50
+    //% weight=95
     //% blockId=motor_motorStop block="Stop|%motors"
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2 
     export function motorStop(motors: Motors): void {
@@ -125,7 +110,7 @@ namespace Maqueen {
     }
     //% block
     //% group="Motors"
-    //% weight=50
+    //% weight=90
     //% blockId=motor_motorStopAll block="Motor Stop All"
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);
@@ -139,7 +124,7 @@ namespace Maqueen {
 
     //% group="Distance Sensor"
     //% blockId=ultrasonic_sensor block="read distance sensor unit in |%unit"
-    //% weight=20
+    //% weight=90
     export function sensor(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse  basic.pause=sleep control.waitMicros=delay
         pins.setPull(DigitalPin.P1, PinPullMode.PullNone);
@@ -164,8 +149,8 @@ namespace Maqueen {
         }
     }
     //% group="Line Reader"
-    //% weight=15
-    //% blockId=read_Linesensor block="read |%Linesensor value"
+    //% weight=85
+    //% blockId=read_Linesensor block=" %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
     export function readlinereadervalue(Line: Linesensor): number {
         if (Line == Linesensor.Left) {
@@ -178,7 +163,7 @@ namespace Maqueen {
     }
 
     //% group="Headlights and Underlights"
-    //% weight=11
+    //% weight=80
     //% blockId=writeLED block="Set|%led|to|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
@@ -194,7 +179,7 @@ namespace Maqueen {
 
     //% group="Headlights and Underlights"
     //% block="set UnderGlow color of %LEDStrip to %rgb=colorNumberPicker"
-    //% weight=11 blockGap=8
+    //% weight=75 blockGap=8
     export function setUnderGlowColor(index: LEDStrip, color: number): void {
         strip.setBrightness(100)
         if (index == LEDStrip.RGB0) { strip.setPixelColor(0, color) }
@@ -206,7 +191,7 @@ namespace Maqueen {
 
     //% group="Headlights and Underlights"
     //% block="set UnderGlow of %LEDStrip off"
-    //% weight=11 blockGap=8
+    //% weight=70 blockGap=8
     export function setUnderGlowColoroff(index: LEDStrip): void {
         strip.setBrightness(100)
         if (index == LEDStrip.RGB0) { strip.setPixelColor(0, 0x000000) }

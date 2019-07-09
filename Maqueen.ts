@@ -150,7 +150,7 @@ namespace Maqueen {
     }
     //% group="Line Reader"
     //% weight=85
-    //% blockId=read_Linesensor block=" %Linesensor value"
+    //% blockId=read_Linesensor block="r %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
     export function readlinereadervalue(Line: Linesensor): number {
         if (Line == Linesensor.Left) {

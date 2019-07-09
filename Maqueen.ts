@@ -69,7 +69,6 @@ namespace Maqueen {
         OFF = 0x00
     }
 
-    //% block
     //% group="Motors"
     //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed"
     //% speed.min=0 speed.max=100
@@ -92,7 +91,6 @@ namespace Maqueen {
     }
 
 
-    //% block
     //% group="Motors"
     //% blockId=motor_motorStop block="Stop|%motors"
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2 
@@ -109,7 +107,6 @@ namespace Maqueen {
         buf[2] = 0;
         pins.i2cWriteBuffer(0x10, buf);
     }
-    //% block
     //% group="Motors"
     //% blockId=motor_motorStopAll block="Motor Stop All"
     //% weight=94

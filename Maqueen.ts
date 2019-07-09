@@ -93,7 +93,6 @@ namespace Maqueen {
     //% blockId=motor_MotorRun block="Set both motors to|%Direction|at the speed|%speed" 
     //% speed.min=0 speed.max=100
     //% speed.defl=100
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2
     export function BothMotorRun(Directionection: Direction, speed: number): void {
         let buf = pins.createBuffer(3);

@@ -71,11 +71,12 @@ namespace Maqueen {
 
     //% block
     //% group="Motors"
-    //% weight=95
     //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed"
     //% speed.min=0 speed.max=100
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2
+    //% weight=100
+
     export function MotorRun(index: Motors, Directionection: Direction, speed: number): void {
         let buf = pins.createBuffer(3);
         if (index == 0) {
@@ -93,9 +94,9 @@ namespace Maqueen {
 
     //% block
     //% group="Motors"
-    //% weight=100
     //% blockId=motor_motorStop block="Stop|%motors"
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2 
+    //% weight=95
     export function motorStop(motors: Motors): void {
         let buf = pins.createBuffer(3);
         if (motors == 0) {
@@ -110,8 +111,8 @@ namespace Maqueen {
     }
     //% block
     //% group="Motors"
-    //% weight=100
     //% blockId=motor_motorStopAll block="Motor Stop All"
+    //% weight=94
     export function motorStopAll(): void {
         let buf = pins.createBuffer(3);
         buf[0] = 0x00;

@@ -172,7 +172,7 @@ namespace Maqueen {
     }
 
     //% group="Headlights and Underlights"
-    //% block="Set UnderGlow color of %LEDStrip to %rgb=colorNumberPicker"
+    //% block="Set underglow color of %LEDStrip to %rgb=colorNumberPicker"
     //% blockGap=8
     export function setUnderGlowColor(index: LEDStrip, color: number): void {
         strip.setBrightness(100)
@@ -184,7 +184,7 @@ namespace Maqueen {
     }
 
     //% group="Headlights and Underlights"
-    //% block="Set UnderGlow of %LEDStrip off"
+    //% block="Set underglow of %LEDStrip off"
     //% blockGap=8
     export function setUnderGlowColoroff(index: LEDStrip): void {
         strip.setBrightness(100)

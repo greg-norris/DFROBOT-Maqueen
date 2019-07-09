@@ -71,7 +71,7 @@ namespace Maqueen {
 
     //% block
     //% group="Motors"
-    //% weight=100
+    //% weight=95
     //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed"
     //% speed.min=0 speed.max=100
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
@@ -150,7 +150,7 @@ namespace Maqueen {
     }
     //% group="Line Reader"
     //% weight=85
-    //% blockId=read_Linesensor block="r %Linesensor value"
+    //% blockId=read_Linesensor block=" %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
     export function readlinereadervalue(Line: Linesensor): number {
         if (Line == Linesensor.Left) {

@@ -2,67 +2,48 @@ let alreadyInit = 0
 let strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
 const MOTER_ADDRESSS = 0x10
 
-enum PingUnit {
-    //% block="cm"
-    Centimeters,
-    //% block="μs"
-    MicroSeconds
-}
-
 //% weight=10 color=#008B00 icon="\uf136" block="Maqueen"
-//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights and Underlights"]'
+//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights"]'
+
 namespace Maqueen {
-
-    export class Packeta {
-        public mye: string;
-        public myparam: number;
-    }
-
     export enum Motors {
         //% blockId="LeftMotor" block="LeftMotor"
         LeftMotor = 0,
         //% blockId="RightMotor" block="RightMotor"
         RightMotor = 1
     }
-
     export enum Servos {
-        //% blockId="S1" block="S1"
+        //% blockId="Servo 1" block="Servo 1"
         S1 = 0,
-        //% blockId="S2" block="S2"
+        //% blockId="Servo 2" block="Servo 2"
         S2 = 1
     }
-    export enum LEDStrip {
-        //% blockId="RBG0" block="RGB0"
-        RGB0 = 0,
-        //% blockId="RBG1" block="RGB1"
-        RGB1 = 1,
-        //% blockId="RBG2" block="RGB2"
-        RGB2 = 2,
-        //% blockId="RBG3" block="RGB3"
-        RGB3 = 3,
-    }
     export enum Direction {
-        //% blockId="forwards" block="forwards"
+        //% blockId="forward" block="forward"
         forwards = 0x0,
-        //% blockId="backwards" block="backwards"
+        //% blockId="backward" block="backward"
         backwards = 0x1
     }
 
+    export enum PingUnit {
+        //% block="cm"
+        Centimeters,
+        //% block="μs"
+        MicroSeconds
+    }
     export enum Linesensor {
         //% blockId="Left line reader" block="Left line reader"
-        Left = 13,
+        LeftLineSensor = 13,
         //% blockId="Right line reader" block="Right line reader"
-        Right = 14
+        RightLineSensor = 14
     }
-
-    export enum LED {
+    export enum LEDpin {
         //% blockId="Headlight Left" block="Headlight Left"
         HeadlightLeft = 8,
         //% blockId="Headlight Right" block="Headlight Right"
         HeadlightRight = 12
     }
-
-    export enum LEDswitch {
+    export enum LEDmode {
         //% blockId="ON" block="ON"
         ON = 0x01,
         //% blockId="OFF" block="OFF"
@@ -104,8 +85,6 @@ namespace Maqueen {
         pins.i2cWriteBuffer(0x10, buf);
         buf[0] = 0x02;
         pins.i2cWriteBuffer(0x10, buf);
-
-
     }
     //% weight=98
     //% group="Motors"
@@ -169,9 +148,9 @@ namespace Maqueen {
     //% blockId=read_Linesensor block=" %Linesensor value"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
     export function readlinereadervalue(Line: Linesensor): number {
-        if (Line == Linesensor.Left) {
+        if (Line == Linesensor.LeftLineSensor) {
             return pins.digitalReadPin(DigitalPin.P13)
-        } else if (Line == Linesensor.Right) {
+        } else if (Line == Linesensor.RightLineSensor) {
             return pins.digitalReadPin(DigitalPin.P14)
         } else {
             return -1
@@ -179,45 +158,17 @@ namespace Maqueen {
     }
 
     //% weight=87
-    //% group="Headlights and Underlights"
+    //% group="Headlights"
     //% blockId=writeLED block="Set|%led|to|%ledswitch"
     //% led.fieldEditor="gridpicker" led.fieldOptions.columns=2 
     //% ledswitch.fieldEditor="gridpicker" ledswitch.fieldOptions.columns=2
-    export function writeLED(led: LED, ledswitch: LEDswitch): void {
-        if (led == LED.HeadlightLeft) {
+    export function writeLED(led: LEDpin, ledswitch: LEDmode): void {
+        if (led == LEDpin.HeadlightLeft) {
             pins.digitalWritePin(DigitalPin.P8, ledswitch)
-        } else if (led == LED.HeadlightRight) {
+        } else if (led == LEDpin.HeadlightRight) {
             pins.digitalWritePin(DigitalPin.P12, ledswitch)
         } else {
             return
         }
     }
-
-    //% weight=85
-    //% group="Headlights and Underlights"
-    //% block="Set underglow color of %LEDStrip to %rgb=colorNumberPicker"
-    //% blockGap=8
-    export function setUnderGlowColor(index: LEDStrip, color: number): void {
-        strip.setBrightness(100)
-        if (index == LEDStrip.RGB0) { strip.setPixelColor(0, color) }
-        else if (index == LEDStrip.RGB1) { strip.setPixelColor(1, color) }
-        else if (index == LEDStrip.RGB2) { strip.setPixelColor(2, color) }
-        else if (index == LEDStrip.RGB3) { strip.setPixelColor(3, color) }
-
-    }
-
-    //% weight=84
-    //% group="Headlights and Underlights"
-    //% block="Set underglow of %LEDStrip off"
-    //% blockGap=8
-    export function setUnderGlowColoroff(index: LEDStrip): void {
-        strip.setBrightness(100)
-        if (index == LEDStrip.RGB0) { strip.setPixelColor(0, 0x000000) }
-        else if (index == LEDStrip.RGB1) { strip.setPixelColor(1, 0x000000) }
-        else if (index == LEDStrip.RGB2) { strip.setPixelColor(2, 0x000000) }
-        else if (index == LEDStrip.RGB3) { strip.setPixelColor(3, 0x000000) }
-
-    }
-
-
 }

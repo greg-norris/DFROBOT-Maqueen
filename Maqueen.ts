@@ -173,7 +173,7 @@ namespace Maqueen {
     }
     //% weight=50
     //% group="Servo"
-    //% blockId=servo_ServoRun block="Set servo |%index| to a |%angle angle"
+    //% blockId=servo_ServoRun block="Set |%index| to a |%angle angle"
     //% angle.min=0 angle.max=180
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     export function ServoRun(index: Servos, angle: number): void {

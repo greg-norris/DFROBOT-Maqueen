@@ -3,7 +3,7 @@ let strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
 const MOTER_ADDRESSS = 0x10
 
 //% weight=10 color=#008B00 icon="\uf136" block="Maqueen"
-//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights"]'
+//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights", "Servo Control"]'
 
 namespace Maqueen {
     export enum Motors {
@@ -170,5 +170,21 @@ namespace Maqueen {
         } else {
             return
         }
+    }
+    //% weight=50
+    //% group="Headlights"
+    //% blockId=servo_ServoRun block="Servo|%index|angle|%angle"
+    //% angle.min=0 angle.max=180
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
+    export function ServoRun(index: Servos, angle: number): void {
+        let buf = pins.createBuffer(2);
+        if (index == 0) {
+            buf[0] = 0x14;
+        }
+        if (index == 1) {
+            buf[0] = 0x15;
+        }
+        buf[1] = angle;
+        pins.i2cWriteBuffer(0x10, buf);
     }
 }

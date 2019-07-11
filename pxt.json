@@ -1,6 +1,6 @@
 {
     "name": "maqueen",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -16,5 +16,5 @@
     ],
     "public": false,
     "preferredEditor": "tsprj",
-    "installedVersion": "workspace:4252f28c-f16e-4fe6-be05-ffc68bef1c3b"
+    "installedVersion": "workspace:03f2156e-5056-4b36-ed8c-6a80497cc13b"
 }

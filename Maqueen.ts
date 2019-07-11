@@ -3,7 +3,7 @@ let strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
 const MOTER_ADDRESSS = 0x10
 
 //% weight=10 color=#008B00 icon="\uf136" block="Maqueen"
-//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights", "Servo Control"]'
+//% groups='["Motors", "Distance Sensor", "Line Reader","Headlights", "Servo"]'
 
 namespace Maqueen {
     export enum Motors {
@@ -172,8 +172,8 @@ namespace Maqueen {
         }
     }
     //% weight=50
-    //% group="Headlights"
-    //% blockId=servo_ServoRun block="Servo|%index|angle|%angle"
+    //% group="Servo"
+    //% blockId=servo_ServoRun block="Set servo |%index| to a |%angle angle"
     //% angle.min=0 angle.max=180
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     export function ServoRun(index: Servos, angle: number): void {

@@ -1,5 +1,5 @@
 let alreadyInit = 0
-let strip = light.createNeoPixelStrip(pins.P15, 4)
+let strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
 const MOTER_ADDRESSS = 0x10
 
 enum PingUnit {

@@ -10,7 +10,9 @@ namespace Maqueen {
         //% blockId="LeftMotor" block="LeftMotor"
         LeftMotor = 0,
         //% blockId="RightMotor" block="RightMotor"
-        RightMotor = 1
+        RightMotor = 1, 
+        //% blockId="BothMotors" block="BothMotors"
+        BothMotors = 2
     }
     export enum Servos {
         //% blockId="Servo 1" block="Servo 1"
@@ -58,32 +60,23 @@ namespace Maqueen {
     //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2
     export function MotorRun(index: Motors, Directionection: Direction, speed: number): void {
         let buf = pins.createBuffer(3);
+        speed = speed * 2.55
+        buf[1] = Directionection;
+        buf[2] = speed;
+
         if (index == 0) {
             buf[0] = 0x00;
         }
         if (index == 1) {
             buf[0] = 0x02;
         }
-        speed = speed * 2.55
-        buf[1] = Directionection;
-        buf[2] = speed;
-        pins.i2cWriteBuffer(0x10, buf);
-    }
-    //% weight=99
-    //% group="Motors"
-    //% blockId=motor_BothMotorRun block="Set both motors to|%Direction|at the speed|%speed" 
-    //% speed.min=0 speed.max=100
-    //% speed.defl=100
-    //% Directionection.fieldEditor="gridpicker" Directionection.fieldOptions.columns=2
-    export function BothMotorRun(Directionection: Direction, speed: number): void {
-        let buf = pins.createBuffer(3);
-        speed = speed * 2.55
+        if (index == 2){
+            buf[0] = 0x00;
+            pins.i2cWriteBuffer(0x10, buf);
+            buf[0] = 0x02;
+            pins.i2cWriteBuffer(0x10, buf);
+        }
 
-        buf[0] = 0x00;
-        buf[1] = Directionection;
-        buf[2] = speed;
-        pins.i2cWriteBuffer(0x10, buf);
-        buf[0] = 0x02;
         pins.i2cWriteBuffer(0x10, buf);
     }
     //% weight=98

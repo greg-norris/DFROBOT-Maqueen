@@ -77,7 +77,6 @@ namespace Maqueen {
             pins.i2cWriteBuffer(0x10, buf);
         }
 
-        pins.i2cWriteBuffer(0x10, buf);
     }
     //% weight=98
     //% group="Motors"
@@ -85,28 +84,21 @@ namespace Maqueen {
     //% motors.fieldEditor="gridpicker" motors.fieldOptions.columns=2
     export function motorStop(motors: Motors): void {
         let buf = pins.createBuffer(3);
+        buf[1] = 0;
+        buf[2] = 0;
+
         if (motors == 0) {
             buf[0] = 0x00;
         }
         if (motors == 1) {
             buf[0] = 0x02;
         }
-        buf[1] = 0;
-        buf[2] = 0;
-        pins.i2cWriteBuffer(0x10, buf);
-    }
-
-    //% weight=97
-    //% group="Motors"
-    //% blockId=motor_motorStopAll block="Stop both motors"
-    export function motorStopAll(): void {
-        let buf = pins.createBuffer(3);
-        buf[0] = 0x00;
-        buf[1] = 0;
-        buf[2] = 0;
-        pins.i2cWriteBuffer(0x10, buf);
-        buf[0] = 0x02;
-        pins.i2cWriteBuffer(0x10, buf);
+        if (motors == 2) {
+            buf[0] = 0x00;
+            pins.i2cWriteBuffer(0x10, buf);
+            buf[0] = 0x02;
+            pins.i2cWriteBuffer(0x10, buf);
+        }
     }
 
     //% weight=90

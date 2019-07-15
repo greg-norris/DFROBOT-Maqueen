@@ -76,6 +76,8 @@ namespace Maqueen {
             buf[0] = 0x02;
             pins.i2cWriteBuffer(0x10, buf);
         }
+        pins.i2cWriteBuffer(0x10, buf);
+
 
     }
     //% weight=98
@@ -99,6 +101,8 @@ namespace Maqueen {
             buf[0] = 0x02;
             pins.i2cWriteBuffer(0x10, buf);
         }
+        pins.i2cWriteBuffer(0x10, buf);
+        
     }
 
     //% weight=90

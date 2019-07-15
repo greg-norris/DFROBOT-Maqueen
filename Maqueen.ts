@@ -114,8 +114,6 @@ namespace Maqueen {
         pins.digitalWritePin(DigitalPin.P1, 0);
         pins.setPull(DigitalPin.P2, PinPullMode.PullUp);
 
-
-
         let d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 42);
         let dr = Math.round(d / 42);
         console.log("Distance: " + dr);

@@ -138,6 +138,7 @@ namespace Maqueen {
     //% group="Line Reader"
     //% blockId=read_Linesensor block=" %Linesensor detects %type"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
+    
     export function readlinereadervalue(Line: Linesensor, typeline: linevalue): boolean {
         let LeftLineSensorValue = pins.digitalReadPin(DigitalPin.P13)
         let RightLineSensorValue = pins.digitalReadPin(DigitalPin.P14)

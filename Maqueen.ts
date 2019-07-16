@@ -142,10 +142,10 @@ namespace Maqueen {
     export function readlinereadervalue(Line: Linesensor, typeline: linevalue): boolean {
         let LeftLineSensorValue = pins.digitalReadPin(DigitalPin.P13)
         let RightLineSensorValue = pins.digitalReadPin(DigitalPin.P14)
-        if (typeline == linevalue.white && LeftLineSensorValue == 0) {
+        if (typeline == linevalue.white && LeftLineSensorValue == 1) {
             return true
         }
-        else if (typeline == linevalue.black && LeftLineSensorValue == 1) {
+        else if (typeline == linevalue.black && LeftLineSensorValue == 0) {
             return true
         }
         else{

@@ -10,7 +10,7 @@ namespace Maqueen {
         //% blockId="LeftMotor" block="LeftMotor"
         LeftMotor = 0,
         //% blockId="RightMotor" block="RightMotor"
-        RightMotor = 1, 
+        RightMotor = 1,
         //% blockId="BothMotors" block="BothMotors"
         BothMotors = 2
     }
@@ -51,7 +51,7 @@ namespace Maqueen {
         //% blockId="OFF" block="OFF"
         OFF = 0x00
     }
-    export enum linevalue{
+    export enum linevalue {
         white,
         black
     }
@@ -74,7 +74,7 @@ namespace Maqueen {
         if (index == 1) {
             buf[0] = 0x02;
         }
-        if (index == 2){
+        if (index == 2) {
             buf[0] = 0x00;
             pins.i2cWriteBuffer(0x10, buf);
             buf[0] = 0x02;
@@ -106,7 +106,7 @@ namespace Maqueen {
             pins.i2cWriteBuffer(0x10, buf);
         }
         pins.i2cWriteBuffer(0x10, buf);
-        
+
     }
 
     //% weight=90
@@ -138,7 +138,8 @@ namespace Maqueen {
     //% group="Line Reader"
     //% blockId=read_Linesensor block=" %Linesensor detects %type"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
-    
+
+
     export function readlinereadervalue(Line: Linesensor, typeline: linevalue): boolean {
         let LeftLineSensorValue = pins.digitalReadPin(DigitalPin.P13)
         let RightLineSensorValue = pins.digitalReadPin(DigitalPin.P14)
@@ -148,7 +149,13 @@ namespace Maqueen {
         else if (typeline == linevalue.black && LeftLineSensorValue == 0) {
             return true
         }
-        else{
+        if (typeline == linevalue.white && RightLineSensorValue == 1) {
+            return true
+        }
+        else if (typeline == linevalue.black && RightLineSensorValue == 0) {
+            return true
+        }
+        else {
             return false
         }
     }
@@ -165,7 +172,7 @@ namespace Maqueen {
             pins.digitalWritePin(DigitalPin.P12, ledswitch)
         } else {
             return
-            
+
         }
     }
     //% weight=50

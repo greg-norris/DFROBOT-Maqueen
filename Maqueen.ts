@@ -51,6 +51,10 @@ namespace Maqueen {
         //% blockId="OFF" block="OFF"
         OFF = 0x00
     }
+    export enum linevalue{
+        white,
+        black
+    }
     //% weight=100
     //% group="Motors"
     //% blockId=motor_MotorRun block="Set|%index|to|%Direction|at the speed|%speed" 
@@ -132,15 +136,16 @@ namespace Maqueen {
 
     //% weight=89
     //% group="Line Reader"
-    //% blockId=read_Linesensor block=" %Linesensor value"
+    //% blockId=read_Linesensor block=" %Linesensor detects %type"
     //% Linesensor.fieldEditor="gridpicker" Linesensor.fieldOptions.columns=2 
-    export function readlinereadervalue(Line: Linesensor): number {
-        if (Line == Linesensor.LeftLineSensor) {
-            return pins.digitalReadPin(DigitalPin.P13)
-        } else if (Line == Linesensor.RightLineSensor) {
-            return pins.digitalReadPin(DigitalPin.P14)
-        } else {
-            return -1
+    export function readlinereadervalue(Line: Linesensor, typeline: linevalue): boolean {
+        let LeftLineSensorValue = pins.digitalReadPin(DigitalPin.P13)
+        let RightLineSensorValue = pins.digitalReadPin(DigitalPin.P14)
+        if (typeline == linevalue.black && LeftLineSensorValue == 1) {
+            return true
+        }
+        else{
+            return false
         }
     }
 

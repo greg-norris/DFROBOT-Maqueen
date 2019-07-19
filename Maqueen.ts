@@ -175,6 +175,18 @@ namespace Maqueen {
 
         }
     }
+    let SmartStrip: neopixel.Strip;
+    //% blockId=Tinybit_RGB_Car_Program block="Smart leds"
+    //% weight=86
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Car_Program(): neopixel.Strip {
+         
+        if (!SmartStrip) {
+            SmartStrip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB);
+        }
+        return SmartStrip;  
+    }  
     //% weight=50
     //% group="Servo"
     //% blockId=servo_ServoRun block="Set |%index| to a |%angle angle"
